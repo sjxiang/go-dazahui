@@ -1,10 +1,13 @@
-package config_v1
+package conf_v3
+
 
 import (
 	"testing"
 )
 
+
 func TestLoadConfig(t *testing.T) {
-	config := LoadConfig()
-	t.Log(*config)
+	LoadConfig()
+
+	t.Log(Cfg)
 }
