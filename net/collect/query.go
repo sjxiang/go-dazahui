@@ -1,6 +1,6 @@
 // 采集，模拟 POST 请求
 
-package collect
+package main
 
 import (
 	"bytes"

@@ -1,15 +1,17 @@
 // 采集 模拟 POST 请求
 
-package collect
+package main
 
-import (
-	"testing"
-)
+import "os"
 
-func TestTranslateAPI(t *testing.T) {
-	Query("sex")
+func main() {
+	if len(os.Args) != 2 {
+		panic("参数不足")
+	}
+
+	words := os.Args[1]
+	Query(words)
 }
-
 
 
 /*
@@ -41,5 +43,5 @@ func TestTranslateAPI(t *testing.T) {
 
 	6. 完善代码
 
-	
+
 */
