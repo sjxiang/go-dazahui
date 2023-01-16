@@ -33,25 +33,6 @@ type Redis struct {
 }
 
 
-/* 
-
-*** 温馨小提示 tips
-
-	这里推荐使用 mapstructure 作为序列化标签
-
-	1. yaml 不支持 
-
-		" AppSignExpire int64  `yaml:"app_sign_expire"` " 
-
-		这种下划线的标签
-
-	2. 使用 mapstructure 值得注意的地方是，只要标签中使用了下划线等连接符，":"后就不能有空格。
-		比如： 
-			AppSignExpire int64  `yaml:"app_sign_expire"`是可以被解析的
-			AppSignExpire int64  `yaml: "app_sign_expire"` 不能被解析
-
-*/
-
 
 // 加载配置，失败直接 panic
 func LoadConfig() {

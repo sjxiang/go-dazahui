@@ -14,17 +14,15 @@
 
 
 方案
-- json 
-- .env 环境变量
-- yml
+- json 序列化 
+- 环境变量 os.Getenv("HOST")
+- viper
 
 
 ```
 
 ```text
 网络
-
-
 - 模拟 POST 请求
 - 网络代理
 
