@@ -20,3 +20,13 @@ func main() {
 	add2ptr(&n)
 	fmt.Println(n) // 7
 }
+
+/*
+
+    &<x> 
+	获取变量的地址
+    
+	*<x>  
+	对内存空间的读写
+
+*/

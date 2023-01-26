@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	var a [5]int   // 业务中很少用，因为长度固定
+	var a [5]int  
 	a[4] = 100
 	fmt.Println("get:", a[2])
 	fmt.Println("len:", len(a)) 
@@ -14,9 +14,16 @@ func main() {
 
 	var twoD [2][3]int
 	for i := 0; i < 2; i++ {
-		for j := 0; j < 3; j++ {
+		for j := 0; j < 3; j++ {    
 			twoD[i][j] = i + j
 		}
 	}
 	fmt.Println("2d: ", twoD)
 }
+
+
+/*
+
+	因为数组长度固定，业务中很少用，更多的还是切片
+
+*/

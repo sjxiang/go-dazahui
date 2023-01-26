@@ -15,14 +15,14 @@ func (router Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	nextHTTP(w, r)
 }
 
-func main() {
-	srv := &http.Server{
-		Addr: ":8888",
-		Handler: Router{},  // 需要实现 ServeHTTP 接口的实例
-	}
+// func main() {
+// 	srv := &http.Server{
+// 		Addr: ":8888",
+// 		Handler: Router{},  // 需要实现 ServeHTTP 接口的实例
+// 	}
 
-	log.Fatal(srv.ListenAndServe())
-}
+// 	log.Fatal(srv.ListenAndServe())
+// }
 
 
 func nextHTTP(w http.ResponseWriter, r *http.Request) {
