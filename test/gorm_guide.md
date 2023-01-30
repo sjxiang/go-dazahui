@@ -40,3 +40,14 @@ _, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 
 
 
+
+
+# GORM 性能提高
+
+对于写操作（创建、更新、删除），为了确保数据的完整性，GORM 会将它们封装在事务内运行。
+但这会降低性能，可以使用 SkipDefaultTransaction 关闭默认事务。
+
+使用 PrepareStmt 缓存预编译语句，可以提高后续调用的速度，大约 35%。
+
+
+# GORM 生态
