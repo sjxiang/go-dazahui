@@ -2,13 +2,17 @@ package test
 
 import (
 	"fmt"
+	"time"
 	"testing"
+	"os"
+	"log"
 
 	"gorm.io/driver/mysql" // GORM 通过驱动来连接数据库
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
+const MySQLDefaultDSN = ""
 
 var dsn string = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&&multiStatements=true&loc=Local",
 					"root",
@@ -17,22 +21,28 @@ var dsn string = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True
 					3306,
 					"crud-demo")
 
-var (
-	db *gorm.DB
-	err error
-)
+var db *gorm.DB
+
 
 
 func Init() {
-		
+	var err error
+	gormlogrus := logger.New(
+		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer（日志输出的目标，前缀和日志包含的内容)
+		logger.Config{
+			SlowThreshold: time.Millisecond,
+			Colorful:      false,
+			LogLevel:      logger.Info,
+		},
+	)
 	db, err = gorm.Open(mysql.Open(dsn), 
 		&gorm.Config{
-			Logger: logger.Default.LogMode(logger.Info),
+			Logger: gormlogrus,
 			SkipDefaultTransaction: true,  // 关闭默认事务
 			PrepareStmt: true},            // 缓存预编译语句
 	)
 	if err != nil {
-		panic("failed to connect database, error: " + err.Error())
+		panic(err)
 	}
 
 	db.AutoMigrate(&User{}, &Email{})  // 自动迁移
