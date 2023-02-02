@@ -8,7 +8,7 @@ import (
 
 func main() {
 	
-	// 可视化
+	// 可视化，BUG！
 	banner("Go", 6)
 	banner("G😊", 6)  
 
@@ -49,7 +49,7 @@ func main() {
 
 // 判断回文
 func IsPalindrome(s string) bool {
-	rs := []rune(s)
+	rs := []rune(s) // 强转成切片
 	for i := 0; i < len(rs)/2; i++ {
 		if rs[i] != rs[len(rs)-i-1] {
 			return false
@@ -73,25 +73,27 @@ func banner(text string, width int) {
 	fmt.Println()
 }
 
+
 /*
 
 	1. string 延伸
-
-	2. unicode 基础
-		unicode table 字符集
-			0 => U+0030
-
-		utf-8 传输格式，压缩编码
-
-
-		
-	3. "fmt" 格式化输出
-
 
 	type stringStruct struct {
 		str unsafe.Pointer
 		len int
 	}
 
+	2. unicode 基础
+		unicode 字符集
+			'0' -> U+0030
+
+		utf-8 传输格式，压缩编码
+
+
+		
+	3. "fmt" 格式化输出
+		%d - 10 进制
+		%s - 字符串
+		%.2f - 保留两位小数
 
 	*/
