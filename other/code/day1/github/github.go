@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"time"
@@ -20,29 +21,34 @@ func main() {
 
 // githubInfo 返回 login 用户的姓名以及公开仓库数量
 func githubInfo(ctx context.Context, login string) (string, int, error) {
-
-	url := "https://api.github.com/users/" + url.PathEscape(login)
 	
-	// resp, err := http.Get(url)
+	// 创建请求 
+	url := "https://api.github.com/users/" + url.PathEscape(login)	
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
 		return "", 0, err
 	}
+	req.Header.Set("user-agent", "Go")
 
+	// 发起请求
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return "", 0, err
 	}
+	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", 0, fmt.Errorf("%#v - %s", url, resp.Status)
+		log.Fatalf("%#v - %s", url, resp.Status)
+		/*		
+			log.Printf("%#v - %s", url, resp.StatusCode)
+			os.Exit(1)
+		*/
 	}
-	
-	defer resp.Body.Close()
-	// fmt.Printf("content-type: %s\n", resp.Header.Get("content-type"))
-	// var r Reply
 
-	var r struct {
+	// fmt.Printf("content-type: %s\n", resp.Header.Get("content-type"))
+	
+	// 读取响应
+	var r struct {  // 匿名 struct
 		Name        string `json:"login"`
 		NumRepos    int    `json:"public_repos"`
 	}
@@ -54,12 +60,6 @@ func githubInfo(ctx context.Context, login string) (string, int, error) {
 	return r.Name, r.NumRepos, nil
 }
 
-/*
-	type Reply struct {
-		Name        string `json:"login"`
-		NumRepos    int    `json:"public_repos"`
-	}
-*/
 
 /*
 
@@ -71,7 +71,7 @@ $ curl -i -H 'User-Agent:go' https://api.github.com/users/sjxiang
 
 
 
-/* "io"
+/* io
 
 	type Closer interface {
 		Close() error
@@ -81,8 +81,8 @@ $ curl -i -H 'User-Agent:go' https://api.github.com/users/sjxiang
 		Read(p []byte) (n int, err error)
 	}
 
-	io.Copy(os.Stdout, resp.Body)  // 一大坨，乱糟糟的
-		
+	io.Copy(os.Stdout, src)  // 一大坨，乱糟糟的
+
 	*/
 
 

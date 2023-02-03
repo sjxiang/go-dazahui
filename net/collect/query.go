@@ -41,7 +41,7 @@ func Query(word string) {
 
 	// 设置请求头
 	req.Header.Set("authority", "translate.volcengine.com")
-	req.Header.Set("accept", "application/json, text/plain, */*")
+	req.Header.Set("accept", "application/json")
 	req.Header.Set("accept-language", "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6")
 	req.Header.Set("cache-control", "no-cache")
 	req.Header.Set("content-type", "application/json")
