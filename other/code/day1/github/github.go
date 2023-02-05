@@ -35,7 +35,7 @@ func githubInfo(ctx context.Context, login string) (string, int, error) {
 	if err != nil {
 		return "", 0, err
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close()  // LIFO，先进后出
 
 	if resp.StatusCode != http.StatusOK {
 		log.Fatalf("%#v - %s", url, resp.Status)
