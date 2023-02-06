@@ -10,9 +10,9 @@ func main() {
 	
 	// 可视化，BUG！
 	banner("Go", 6)
-	banner("G😊", 6)  
+	banner("G☺", 6)  
 
-	s := "G😊"
+	s := "G☺"
 	fmt.Println("len:", len(s))  // 5 = 1 + 4
 
 

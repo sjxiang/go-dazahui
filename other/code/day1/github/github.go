@@ -91,7 +91,7 @@ $ curl -i -H 'User-Agent:go' https://api.github.com/users/sjxiang
 	true/false <-> true/false
 	string     <-> string
 	null       <-> nil
-	number     <-> float64、float43、int8、...
+	number <-> float64, float32, int8, int16, int32, int64, int, uint8, ...
 	array      <-> []interface{}
 	object     <-> map[string]interface{}、struct
 
@@ -99,6 +99,7 @@ $ curl -i -H 'User-Agent:go' https://api.github.com/users/sjxiang
 
 
 /* JSON 编码/解码 API
+
 
 	JSON -> io.Reader -> Go: json.Decoder
 	JSON -> []byte    -> Go: json.Unmarshal

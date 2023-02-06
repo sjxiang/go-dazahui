@@ -20,14 +20,19 @@ Day 1
 Day 2
 
 - slice 工作原理 
-- 类 OOP
-- 空接口、类型断言
-- 处理异常
-- 统计字频
+- OOP
+- 空接口 + 类型断言
+- 处理异常（defer、panic、recover）
+- 统计字频（file、regexp、map）
 
 
 Day 3
 
+- go_chan.go
+- 
+- 
+- 
+-
 
 
 Day 4
