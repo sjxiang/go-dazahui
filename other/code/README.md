@@ -28,12 +28,16 @@ Day 2
 
 Day 3
 
-- go_chan.go
-- 
-- 
-- 
--
+- go_chan.go （ goroutine 初识、闭包要素、channel 语义 ）
+- taxi_check.go
+- sites_time.go 
+- payment.go
+- counter.go
+- select.go
+- rtb.go ( context 超时，30 min 完成，否则取消)
 
 
 Day 4
+
+
 

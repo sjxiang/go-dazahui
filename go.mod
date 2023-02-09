@@ -3,6 +3,7 @@ module github.com/sjxiang/go-dazahui
 go 1.17
 
 require (
+	github.com/BurntSushi/toml v0.3.1
 	github.com/fsnotify/fsnotify v1.6.0
 	github.com/gin-gonic/gin v1.8.2
 	github.com/joho/godotenv v1.4.0

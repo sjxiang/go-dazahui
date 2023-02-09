@@ -91,6 +91,9 @@ func main() {
 
 
 	详情，https://www.353solutions.com/channel-semantics
+
+	有缓冲的 channel，不会阻塞
+
 */
 
 

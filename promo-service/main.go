@@ -86,3 +86,14 @@ func main() {
 	订单号生成
 	
 */
+
+
+// func test() {
+// 	ticker := time.NewTicker(5 * time.Minute)
+// 	for {
+// 		select {
+// 		case <-ticker.C:
+// 			SyncLocalCache()  // 每隔五分钟刷新本地缓存数据
+// 		}
+// 	}
+// }
